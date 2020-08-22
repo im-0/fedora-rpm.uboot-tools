@@ -2,7 +2,7 @@
 
 Name:      uboot-tools
 Version:   2020.10
-Release:   0.2%{?candidate:.%{candidate}}%{?dist}
+Release:   0.im0.2%{?candidate:.%{candidate}}%{?dist}
 Summary:   U-Boot utilities
 License:   GPLv2+ BSD LGPL-2.1+ LGPL-2.0+
 URL:       http://www.denx.de/wiki/U-Boot
@@ -33,6 +33,9 @@ Patch12:   AllWinner-Pine64-bits.patch
 Patch13:   arm-rk3399-enable-rng-on-rock960-and-firefly3399.patch
 # RPi
 Patch14:   rpi-Enable-using-the-DT-provided-by-the-Raspberry-Pi.patch
+
+# Tanix TX6
+Patch1001: 0001-sunxi-H6-Add-basic-Tanix-TX6-support.patch
 
 BuildRequires:  bc
 BuildRequires:  dtc
@@ -117,7 +120,7 @@ do
     echo "Board: $board using sun50i_a64"
     cp /usr/share/arm-trusted-firmware/sun50i_a64/* builds/$(echo $board)/
   fi
-  sun50h6=(orangepi_lite2 orangepi_one_plus pine_h64)
+  sun50h6=(orangepi_lite2 orangepi_one_plus pine_h64 tanix_tx6)
   if [[ " ${sun50h6[*]} " == *" $board "* ]]; then
     echo "Board: $board using sun50i_h6"
     cp /usr/share/arm-trusted-firmware/sun50i_h6/* builds/$(echo $board)/
@@ -246,6 +249,9 @@ cp -p board/warp7/README builds/docs/README.warp7
 %endif
 
 %changelog
+* Sat Aug 22 2020 Ivan Mironov <mironov.ivan@gmail.com> - 2020.10-0.im0.2.rc2
+- Support Tanix TX6
+
 * Mon Aug 10 2020 Peter Robinson <pbrobinson@fedoraproject.org> - 2020.10-0.2.rc2
 - Update to 2020.10 RC2
 
