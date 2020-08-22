@@ -2,7 +2,7 @@
 
 Name:     uboot-tools
 Version:  2020.10
-Release:  1%{?candidate:.%{candidate}}%{?dist}
+Release:  1%{?candidate:.%{candidate}}.im0%{?dist}
 Summary:  U-Boot utilities
 License:  GPLv2+ BSD LGPL-2.1+ LGPL-2.0+
 URL:      http://www.denx.de/wiki/U-Boot
@@ -38,6 +38,10 @@ Patch13:  arm-rk3399-enable-rng-on-rock960-and-firefly3399.patch
 Patch14:  rk3399-Pinebook-pro-EDP-support.patch
 Patch15:  rk3399-reset-display-hack.patch
 Patch16:  rockchip-Rock960-Fix-up-USB-support.patch
+
+# Tanix TX6
+Patch1001: 0001-sunxi-H6-Add-basic-Tanix-TX6-support.patch
+Patch1002: 0002-sunxi-H6-Change-dts-for-Tanix-TX6-to-match-dts-from-.patch
 
 BuildRequires:  bc
 BuildRequires:  dtc
@@ -120,7 +124,7 @@ do
     echo "Board: $board using sun50i_a64"
     cp /usr/share/arm-trusted-firmware/sun50i_a64/* builds/$(echo $board)/
   fi
-  sun50h6=(orangepi_lite2 orangepi_one_plus pine_h64)
+  sun50h6=(orangepi_lite2 orangepi_one_plus pine_h64 tanix_tx6)
   if [[ " ${sun50h6[*]} " == *" $board "* ]]; then
     echo "Board: $board using sun50i_h6"
     cp /usr/share/arm-trusted-firmware/sun50i_h6/* builds/$(echo $board)/
@@ -249,6 +253,9 @@ cp -p board/warp7/README builds/docs/README.warp7
 %endif
 
 %changelog
+* Sun Oct 25 2020 Ivan Mironov <mironov.ivan@gmail.com> - 2020.10-1.im0
+- Add support for Tanix TX6
+
 * Tue Oct 06 2020 Peter Robinson <pbrobinson@fedoraproject.org> - 2020.10-1
 - Update to 2020.10
 
