@@ -1,0 +1,27 @@
+From 3edcbf5bb36d1b64c5d7161e1991436764e89a7f Mon Sep 17 00:00:00 2001
+From: Ivan Mironov <mironov.ivan@gmail.com>
+Date: Tue, 1 Sep 2020 10:23:28 +0500
+Subject: [PATCH 2/2] sunxi: H6: Change dts for Tanix TX6 to match dts from
+ kernel
+
+Signed-off-by: Ivan Mironov <mironov.ivan@gmail.com>
+---
+ arch/arm/dts/sun50i-h6-tanix-tx6.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/dts/sun50i-h6-tanix-tx6.dts b/arch/arm/dts/sun50i-h6-tanix-tx6.dts
+index 253534e0c4a4..6d70b31aa2a5 100644
+--- a/arch/arm/dts/sun50i-h6-tanix-tx6.dts
++++ b/arch/arm/dts/sun50i-h6-tanix-tx6.dts
+@@ -13,7 +13,7 @@
+ 
+ / {
+ 	model = "Tanix TX6";
+-	compatible = "tanix,tx6", "allwinner,sun50i-h6";
++	compatible = "oranth,tanix-tx6", "allwinner,sun50i-h6";
+ 
+ 	aliases {
+ 		serial0 = &uart0;
+-- 
+2.26.2
+
