@@ -101,6 +101,9 @@ u-boot bootloader binaries for armv7 boards
 cp %SOURCE1 %SOURCE2 %SOURCE3 %SOURCE4 .
 
 %build
+# Disable LTO
+%define _lto_cflags %{nil}
+
 mkdir builds
 
 %if 0%{?rhel} == 7
